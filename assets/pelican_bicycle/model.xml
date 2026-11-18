@@ -1,0 +1,761 @@
+<mujoco model="pelican_bicycle">
+  <compiler angle="radian" meshdir="meshes" texturedir="textures" autolimits="true"/>
+
+  <default>
+    <default class="pelican_bicycle">
+      <joint damping="0.06" armature="0.004" frictionloss="0.005"/>
+      <default class="visual">
+        <geom group="2" type="mesh" contype="0" conaffinity="0" density="0" mass="0"/>
+      </default>
+      <default class="collision">
+        <geom group="3" contype="1" conaffinity="1" condim="4"
+              friction="0.85 0.02 0.002" solref="0.004 1"
+              rgba="0.20 0.75 0.35 0.45"/>
+      </default>
+    </default>
+  </default>
+
+  <asset>
+    <texture name="cruiser_teal_basecolor" type="2d" file="cruiser_teal_basecolor.png" colorspace="sRGB"/>
+    <texture name="cruiser_teal_roughness" type="2d" file="cruiser_teal_roughness.png" colorspace="linear"/>
+    <texture name="cruiser_teal_metallic" type="2d" file="cruiser_teal_metallic.png" colorspace="linear"/>
+    <texture name="cruiser_teal_normal" type="2d" file="cruiser_teal_normal.png" colorspace="linear"/>
+    <texture name="chrome_metal_basecolor" type="2d" file="chrome_metal_basecolor.png" colorspace="sRGB"/>
+    <texture name="chrome_metal_roughness" type="2d" file="chrome_metal_roughness.png" colorspace="linear"/>
+    <texture name="chrome_metal_metallic" type="2d" file="chrome_metal_metallic.png" colorspace="linear"/>
+    <texture name="chrome_metal_normal" type="2d" file="chrome_metal_normal.png" colorspace="linear"/>
+    <texture name="brass_metal_basecolor" type="2d" file="brass_metal_basecolor.png" colorspace="sRGB"/>
+    <texture name="brass_metal_roughness" type="2d" file="brass_metal_roughness.png" colorspace="linear"/>
+    <texture name="brass_metal_metallic" type="2d" file="brass_metal_metallic.png" colorspace="linear"/>
+    <texture name="brass_metal_normal" type="2d" file="brass_metal_normal.png" colorspace="linear"/>
+    <texture name="leather_tan_basecolor" type="2d" file="leather_tan_basecolor.png" colorspace="sRGB"/>
+    <texture name="leather_tan_roughness" type="2d" file="leather_tan_roughness.png" colorspace="linear"/>
+    <texture name="leather_tan_metallic" type="2d" file="leather_tan_metallic.png" colorspace="linear"/>
+    <texture name="leather_tan_normal" type="2d" file="leather_tan_normal.png" colorspace="linear"/>
+    <texture name="tire_dark_basecolor" type="2d" file="tire_dark_basecolor.png" colorspace="sRGB"/>
+    <texture name="tire_dark_roughness" type="2d" file="tire_dark_roughness.png" colorspace="linear"/>
+    <texture name="tire_dark_metallic" type="2d" file="tire_dark_metallic.png" colorspace="linear"/>
+    <texture name="tire_dark_normal" type="2d" file="tire_dark_normal.png" colorspace="linear"/>
+    <texture name="tire_cream_basecolor" type="2d" file="tire_cream_basecolor.png" colorspace="sRGB"/>
+    <texture name="tire_cream_roughness" type="2d" file="tire_cream_roughness.png" colorspace="linear"/>
+    <texture name="tire_cream_metallic" type="2d" file="tire_cream_metallic.png" colorspace="linear"/>
+    <texture name="tire_cream_normal" type="2d" file="tire_cream_normal.png" colorspace="linear"/>
+    <texture name="plumage_white_basecolor" type="2d" file="plumage_white_basecolor.png" colorspace="sRGB"/>
+    <texture name="plumage_white_roughness" type="2d" file="plumage_white_roughness.png" colorspace="linear"/>
+    <texture name="plumage_white_metallic" type="2d" file="plumage_white_metallic.png" colorspace="linear"/>
+    <texture name="plumage_white_normal" type="2d" file="plumage_white_normal.png" colorspace="linear"/>
+    <texture name="wingtip_slate_basecolor" type="2d" file="wingtip_slate_basecolor.png" colorspace="sRGB"/>
+    <texture name="wingtip_slate_roughness" type="2d" file="wingtip_slate_roughness.png" colorspace="linear"/>
+    <texture name="wingtip_slate_metallic" type="2d" file="wingtip_slate_metallic.png" colorspace="linear"/>
+    <texture name="wingtip_slate_normal" type="2d" file="wingtip_slate_normal.png" colorspace="linear"/>
+    <texture name="eyepatch_cream_basecolor" type="2d" file="eyepatch_cream_basecolor.png" colorspace="sRGB"/>
+    <texture name="eyepatch_cream_roughness" type="2d" file="eyepatch_cream_roughness.png" colorspace="linear"/>
+    <texture name="eyepatch_cream_metallic" type="2d" file="eyepatch_cream_metallic.png" colorspace="linear"/>
+    <texture name="eyepatch_cream_normal" type="2d" file="eyepatch_cream_normal.png" colorspace="linear"/>
+    <texture name="eye_gloss_basecolor" type="2d" file="eye_gloss_basecolor.png" colorspace="sRGB"/>
+    <texture name="eye_gloss_roughness" type="2d" file="eye_gloss_roughness.png" colorspace="linear"/>
+    <texture name="eye_gloss_metallic" type="2d" file="eye_gloss_metallic.png" colorspace="linear"/>
+    <texture name="eye_gloss_normal" type="2d" file="eye_gloss_normal.png" colorspace="linear"/>
+    <texture name="beak_gold_basecolor" type="2d" file="beak_gold_basecolor.png" colorspace="sRGB"/>
+    <texture name="beak_gold_roughness" type="2d" file="beak_gold_roughness.png" colorspace="linear"/>
+    <texture name="beak_gold_metallic" type="2d" file="beak_gold_metallic.png" colorspace="linear"/>
+    <texture name="beak_gold_normal" type="2d" file="beak_gold_normal.png" colorspace="linear"/>
+    <texture name="beak_coral_basecolor" type="2d" file="beak_coral_basecolor.png" colorspace="sRGB"/>
+    <texture name="beak_coral_roughness" type="2d" file="beak_coral_roughness.png" colorspace="linear"/>
+    <texture name="beak_coral_metallic" type="2d" file="beak_coral_metallic.png" colorspace="linear"/>
+    <texture name="beak_coral_normal" type="2d" file="beak_coral_normal.png" colorspace="linear"/>
+    <texture name="pouch_saffron_basecolor" type="2d" file="pouch_saffron_basecolor.png" colorspace="sRGB"/>
+    <texture name="pouch_saffron_roughness" type="2d" file="pouch_saffron_roughness.png" colorspace="linear"/>
+    <texture name="pouch_saffron_metallic" type="2d" file="pouch_saffron_metallic.png" colorspace="linear"/>
+    <texture name="pouch_saffron_normal" type="2d" file="pouch_saffron_normal.png" colorspace="linear"/>
+    <texture name="legs_orange_basecolor" type="2d" file="legs_orange_basecolor.png" colorspace="sRGB"/>
+    <texture name="legs_orange_roughness" type="2d" file="legs_orange_roughness.png" colorspace="linear"/>
+    <texture name="legs_orange_metallic" type="2d" file="legs_orange_metallic.png" colorspace="linear"/>
+    <texture name="legs_orange_normal" type="2d" file="legs_orange_normal.png" colorspace="linear"/>
+    <material name="cruiser_teal_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="cruiser_teal_basecolor" role="rgb"/>
+      <layer texture="cruiser_teal_roughness" role="roughness"/>
+      <layer texture="cruiser_teal_metallic" role="metallic"/>
+      <layer texture="cruiser_teal_normal" role="normal"/>
+    </material>
+    <material name="chrome_metal_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="chrome_metal_basecolor" role="rgb"/>
+      <layer texture="chrome_metal_roughness" role="roughness"/>
+      <layer texture="chrome_metal_metallic" role="metallic"/>
+      <layer texture="chrome_metal_normal" role="normal"/>
+    </material>
+    <material name="brass_metal_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="brass_metal_basecolor" role="rgb"/>
+      <layer texture="brass_metal_roughness" role="roughness"/>
+      <layer texture="brass_metal_metallic" role="metallic"/>
+      <layer texture="brass_metal_normal" role="normal"/>
+    </material>
+    <material name="leather_tan_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="leather_tan_basecolor" role="rgb"/>
+      <layer texture="leather_tan_roughness" role="roughness"/>
+      <layer texture="leather_tan_metallic" role="metallic"/>
+      <layer texture="leather_tan_normal" role="normal"/>
+    </material>
+    <material name="tire_dark_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="tire_dark_basecolor" role="rgb"/>
+      <layer texture="tire_dark_roughness" role="roughness"/>
+      <layer texture="tire_dark_metallic" role="metallic"/>
+      <layer texture="tire_dark_normal" role="normal"/>
+    </material>
+    <material name="tire_cream_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="tire_cream_basecolor" role="rgb"/>
+      <layer texture="tire_cream_roughness" role="roughness"/>
+      <layer texture="tire_cream_metallic" role="metallic"/>
+      <layer texture="tire_cream_normal" role="normal"/>
+    </material>
+    <material name="plumage_white_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="plumage_white_basecolor" role="rgb"/>
+      <layer texture="plumage_white_roughness" role="roughness"/>
+      <layer texture="plumage_white_metallic" role="metallic"/>
+      <layer texture="plumage_white_normal" role="normal"/>
+    </material>
+    <material name="wingtip_slate_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="wingtip_slate_basecolor" role="rgb"/>
+      <layer texture="wingtip_slate_roughness" role="roughness"/>
+      <layer texture="wingtip_slate_metallic" role="metallic"/>
+      <layer texture="wingtip_slate_normal" role="normal"/>
+    </material>
+    <material name="eyepatch_cream_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="eyepatch_cream_basecolor" role="rgb"/>
+      <layer texture="eyepatch_cream_roughness" role="roughness"/>
+      <layer texture="eyepatch_cream_metallic" role="metallic"/>
+      <layer texture="eyepatch_cream_normal" role="normal"/>
+    </material>
+    <material name="eye_gloss_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="eye_gloss_basecolor" role="rgb"/>
+      <layer texture="eye_gloss_roughness" role="roughness"/>
+      <layer texture="eye_gloss_metallic" role="metallic"/>
+      <layer texture="eye_gloss_normal" role="normal"/>
+    </material>
+    <material name="beak_gold_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="beak_gold_basecolor" role="rgb"/>
+      <layer texture="beak_gold_roughness" role="roughness"/>
+      <layer texture="beak_gold_metallic" role="metallic"/>
+      <layer texture="beak_gold_normal" role="normal"/>
+    </material>
+    <material name="beak_coral_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="beak_coral_basecolor" role="rgb"/>
+      <layer texture="beak_coral_roughness" role="roughness"/>
+      <layer texture="beak_coral_metallic" role="metallic"/>
+      <layer texture="beak_coral_normal" role="normal"/>
+    </material>
+    <material name="pouch_saffron_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="pouch_saffron_basecolor" role="rgb"/>
+      <layer texture="pouch_saffron_roughness" role="roughness"/>
+      <layer texture="pouch_saffron_metallic" role="metallic"/>
+      <layer texture="pouch_saffron_normal" role="normal"/>
+    </material>
+    <material name="legs_orange_mat" rgba="1 1 1 1" metallic="1.0" roughness="1.0">
+      <layer texture="legs_orange_basecolor" role="rgb"/>
+      <layer texture="legs_orange_roughness" role="roughness"/>
+      <layer texture="legs_orange_metallic" role="metallic"/>
+      <layer texture="legs_orange_normal" role="normal"/>
+    </material>
+    <mesh name="frame_teal_vis" file="frame_teal_vis.obj" inertia="shell"/>
+    <mesh name="frame_chrome_vis" file="frame_chrome_vis.obj" inertia="shell"/>
+    <mesh name="saddle_leather_vis" file="saddle_leather_vis.obj" inertia="shell"/>
+    <mesh name="fork_teal_vis" file="fork_teal_vis.obj" inertia="shell"/>
+    <mesh name="fork_chrome_vis" file="fork_chrome_vis.obj" inertia="shell"/>
+    <mesh name="fork_grips_vis" file="fork_grips_vis.obj" inertia="shell"/>
+    <mesh name="fork_bell_vis" file="fork_bell_vis.obj" inertia="shell"/>
+    <mesh name="wheel_tread_vis" file="wheel_tread_vis.obj" inertia="shell"/>
+    <mesh name="wheel_wall_vis" file="wheel_wall_vis.obj" inertia="shell"/>
+    <mesh name="wheel_rim_vis" file="wheel_rim_vis.obj" inertia="shell"/>
+    <mesh name="crank_vis" file="crank_vis.obj" inertia="shell"/>
+    <mesh name="pedal_vis" file="pedal_vis.obj" inertia="shell"/>
+    <mesh name="pelican_torso_vis" file="pelican_torso_vis.obj" inertia="shell"/>
+    <mesh name="pelican_neck_vis" file="pelican_neck_vis.obj" inertia="shell"/>
+    <mesh name="pelican_head_vis" file="pelican_head_vis.obj" inertia="shell"/>
+    <mesh name="pelican_eyepatch_vis" file="pelican_eyepatch_vis.obj" inertia="shell"/>
+    <mesh name="pelican_eyes_vis" file="pelican_eyes_vis.obj" inertia="shell"/>
+    <mesh name="pelican_upper_beak_vis" file="pelican_upper_beak_vis.obj" inertia="shell"/>
+    <mesh name="pelican_beak_hook_vis" file="pelican_beak_hook_vis.obj" inertia="shell"/>
+    <mesh name="pelican_jaw_rim_vis" file="pelican_jaw_rim_vis.obj" inertia="shell"/>
+    <mesh name="pelican_pouch_vis" file="pelican_pouch_vis.obj" inertia="shell"/>
+    <mesh name="wing_upper_left_vis" file="wing_upper_left_vis.obj" inertia="shell"/>
+    <mesh name="wing_upper_right_vis" file="wing_upper_right_vis.obj" inertia="shell"/>
+    <mesh name="wing_outer_white_left_vis" file="wing_outer_white_left_vis.obj" inertia="shell"/>
+    <mesh name="wing_outer_white_right_vis" file="wing_outer_white_right_vis.obj" inertia="shell"/>
+    <mesh name="wing_primaries_left_vis" file="wing_primaries_left_vis.obj" inertia="shell"/>
+    <mesh name="wing_primaries_right_vis" file="wing_primaries_right_vis.obj" inertia="shell"/>
+    <mesh name="pelican_thigh_vis" file="pelican_thigh_vis.obj" inertia="shell"/>
+    <mesh name="pelican_shin_vis" file="pelican_shin_vis.obj" inertia="shell"/>
+    <mesh name="pelican_foot_vis" file="pelican_foot_vis.obj" inertia="shell"/>
+  </asset>
+
+  <worldbody>
+    <body name="pelican_bicycle" childclass="pelican_bicycle">
+      <!-- Bicycle frame visual meshes -->
+      <geom name="frame_teal_visual" class="visual" mesh="frame_teal_vis" material="cruiser_teal_mat"/>
+      <geom name="frame_chrome_visual" class="visual" mesh="frame_chrome_vis" material="chrome_metal_mat"/>
+      <geom name="saddle_leather_visual" class="visual" mesh="saddle_leather_vis" material="leather_tan_mat"/>
+
+      <!-- Bicycle frame collision primitives (mass ~ 7.5 kg total) -->
+      <geom name="frame_top_tube_col" class="collision" type="capsule"
+            fromto="-0.230 0 0.675 0.352 0 0.745" size="0.022" mass="1.50"/>
+      <geom name="frame_down_tube_col" class="collision" type="capsule"
+            fromto="0.378 0 0.665 -0.080 0 0.285" size="0.024" mass="1.90"/>
+      <geom name="frame_seat_tube_col" class="collision" type="capsule"
+            fromto="-0.080 0 0.285 -0.245 0 0.750" size="0.022" mass="1.30"/>
+      <geom name="frame_head_tube_col" class="collision" type="capsule"
+            fromto="0.391 0 0.640 0.340 0 0.780" size="0.026" mass="0.30"/>
+      <geom name="frame_chainstay_l_col" class="collision" type="capsule"
+            fromto="-0.540 0.056 0.330 -0.080 0.022 0.285" size="0.018" mass="0.45"/>
+      <geom name="frame_chainstay_r_col" class="collision" type="capsule"
+            fromto="-0.540 -0.056 0.330 -0.080 -0.049 0.285" size="0.022" mass="0.55"/>
+      <geom name="frame_seatstay_l_col" class="collision" type="capsule"
+            fromto="-0.540 0.056 0.330 -0.230 0.016 0.660" size="0.014" mass="0.25"/>
+      <geom name="frame_seatstay_r_col" class="collision" type="capsule"
+            fromto="-0.540 -0.056 0.330 -0.230 -0.016 0.660" size="0.014" mass="0.25"/>
+      <geom name="frame_rear_fender_top_col" class="collision" type="capsule"
+            fromto="-0.270 0 0.560 -0.575 0 0.685" size="0.028" mass="0.15"/>
+      <geom name="frame_rear_fender_back_col" class="collision" type="capsule"
+            fromto="-0.575 0 0.685 -0.880 0 0.435" size="0.028" mass="0.15"/>
+      <geom name="frame_fender_stay_l_col" class="collision" type="capsule"
+            fromto="-0.540 0.056 0.330 -0.880 0.034 0.440" size="0.012" mass="0.05"/>
+      <geom name="frame_fender_stay_r_col" class="collision" type="capsule"
+            fromto="-0.540 -0.056 0.330 -0.880 -0.034 0.440" size="0.012" mass="0.05"/>
+      <geom name="saddle_col" class="collision" type="box"
+            pos="-0.255 0 0.775" size="0.110 0.085 0.022" mass="1.00"
+            rgba="0.95 0.55 0.15 0.45"/>
+
+      <!-- Rear Wheel -->
+      <body name="rear_wheel" pos="-0.540 0 0.330">
+        <joint name="rear_wheel_joint" type="hinge" axis="0 1 0" limited="false"
+               damping="0.02" armature="0.015" frictionloss="0.002"/>
+        <geom name="rear_tire_tread_visual" class="visual" mesh="wheel_tread_vis" material="tire_dark_mat"/>
+        <geom name="rear_tire_wall_visual" class="visual" mesh="wheel_wall_vis" material="tire_cream_mat"/>
+        <geom name="rear_rim_visual" class="visual" mesh="wheel_rim_vis" material="chrome_metal_mat"/>
+        <geom name="rear_wheel_col" class="collision" type="ellipsoid"
+              size="0.330 0.036 0.330" condim="6" friction="1.2 0.01 0.0005"
+              solref="0.004 1" mass="1.80" rgba="0.25 0.55 0.90 0.45"/>
+      </body>
+
+      <!-- Front Fork + Handlebars -->
+      <body name="front_fork" pos="0.391 0 0.640">
+        <joint name="steer_joint" type="hinge" axis="-0.342020 0 0.939693"
+               range="-0.78 0.78" damping="0.35" armature="0.015" solreflimit="0.004 1"/>
+        <geom name="fork_teal_visual" class="visual" mesh="fork_teal_vis" material="cruiser_teal_mat"/>
+        <geom name="fork_chrome_visual" class="visual" mesh="fork_chrome_vis" material="chrome_metal_mat"/>
+        <geom name="fork_grips_visual" class="visual" mesh="fork_grips_vis" material="leather_tan_mat"/>
+        <geom name="fork_bell_visual" class="visual" mesh="fork_bell_vis" material="brass_metal_mat"/>
+
+        <geom name="fork_blades_col" class="collision" type="capsule"
+              fromto="0 0 0 0.159 0 -0.310" size="0.036" mass="0.80"/>
+        <geom name="fork_stem_col" class="collision" type="capsule"
+              fromto="-0.051 0 0.135 -0.045 0 0.268" size="0.024" mass="0.20"/>
+        <geom name="fork_fender_front_col" class="collision" type="capsule"
+              fromto="0.159 0 0.045 0.460 0 -0.145" size="0.028" mass="0.15"/>
+        <geom name="fork_fender_rear_col" class="collision" type="capsule"
+              fromto="-0.155 0 -0.145 0.159 0 0.045" size="0.028" mass="0.15"/>
+        <geom name="handlebar_col" class="collision" type="capsule"
+              fromto="-0.040 -0.130 0.275 -0.040 0.130 0.275" size="0.022" mass="0.20"
+              rgba="0.95 0.55 0.15 0.45"/>
+        <geom name="handlebar_grip_l_col" class="collision" type="capsule"
+              fromto="-0.055 0.145 0.282 -0.205 0.256 0.273" size="0.022" mass="0.15"
+              rgba="0.95 0.55 0.15 0.45"/>
+        <geom name="handlebar_grip_r_col" class="collision" type="capsule"
+              fromto="-0.055 -0.145 0.282 -0.205 -0.256 0.273" size="0.022" mass="0.15"
+              rgba="0.95 0.55 0.15 0.45"/>
+        <site name="grip_left_site" group="4" pos="-0.190 0.250 0.275" size="0.018" rgba="0.95 0.25 0.25 0.40"/>
+        <site name="grip_right_site" group="4" pos="-0.190 -0.250 0.275" size="0.018" rgba="0.95 0.25 0.25 0.40"/>
+
+        <!-- Front Wheel -->
+        <body name="front_wheel" pos="0.159 0 -0.310">
+          <joint name="front_wheel_joint" type="hinge" axis="0 1 0" limited="false"
+                 damping="0.02" armature="0.015" frictionloss="0.002"/>
+          <geom name="front_tire_tread_visual" class="visual" mesh="wheel_tread_vis" material="tire_dark_mat"/>
+          <geom name="front_tire_wall_visual" class="visual" mesh="wheel_wall_vis" material="tire_cream_mat"/>
+          <geom name="front_rim_visual" class="visual" mesh="wheel_rim_vis" material="chrome_metal_mat"/>
+          <geom name="front_wheel_col" class="collision" type="ellipsoid"
+                size="0.330 0.036 0.330" condim="6" friction="1.2 0.01 0.0005"
+                solref="0.004 1" mass="1.80" rgba="0.25 0.55 0.90 0.45"/>
+        </body>
+      </body>
+
+      <!-- Crankset & Pedals -->
+      <body name="crank" pos="-0.080 0 0.285">
+        <joint name="crank_joint" type="hinge" axis="0 1 0" limited="false"
+               damping="0.02" armature="0.008" frictionloss="0.002"/>
+        <geom name="crank_visual" class="visual" mesh="crank_vis" material="chrome_metal_mat"/>
+        <geom name="crank_spindle_col" class="collision" type="capsule"
+              fromto="0 -0.072 0 0 0.072 0" size="0.020" mass="0.20"/>
+        <geom name="crank_arm_l_col" class="collision" type="capsule"
+              fromto="0 0.072 0 0.155 0.078 0" size="0.018" mass="0.20"/>
+        <geom name="crank_arm_r_col" class="collision" type="capsule"
+              fromto="0 -0.072 0 -0.155 -0.078 0" size="0.018" mass="0.20"/>
+        <geom name="crank_chainring_col" class="collision" type="cylinder"
+              pos="0 -0.049 0" quat="0.707107 0.707107 0 0" size="0.092 0.008" mass="0.25"/>
+
+        <body name="pedal_left" pos="0.155 0.125 0">
+          <joint name="pedal_left_joint" type="hinge" axis="0 1 0" limited="false"
+                 damping="0.02" armature="0.002"/>
+          <geom name="pedal_left_visual" class="visual" mesh="pedal_vis" material="tire_dark_mat"/>
+          <geom name="pedal_left_col" class="collision" type="box"
+                size="0.046 0.038 0.012" mass="0.25" rgba="0.90 0.80 0.15 0.50"/>
+          <site name="pedal_left_pin" group="4" pos="0 0 0.014" size="0.012" rgba="0.15 0.80 0.85 0.40"/>
+        </body>
+
+        <body name="pedal_right" pos="-0.155 -0.125 0">
+          <joint name="pedal_right_joint" type="hinge" axis="0 1 0" limited="false"
+                 damping="0.02" armature="0.002"/>
+          <geom name="pedal_right_visual" class="visual" mesh="pedal_vis" material="tire_dark_mat"/>
+          <geom name="pedal_right_col" class="collision" type="box"
+                size="0.046 0.038 0.012" mass="0.25" rgba="0.90 0.80 0.15 0.50"/>
+          <site name="pedal_right_pin" group="4" pos="0 0 0.014" size="0.012" rgba="0.15 0.80 0.85 0.40"/>
+        </body>
+      </body>
+
+      <!-- Pelican Rider -->
+      <body name="pelican_torso" pos="-0.255 0 0.805">
+        <joint name="pelvis_roll" type="hinge" axis="1 0 0" range="-0.36 0.36"
+               damping="1.8" armature="0.02" stiffness="15.0" solreflimit="0.005 1"/>
+        <joint name="pelvis_pitch" type="hinge" axis="0 1 0" range="-0.38 0.36"
+               damping="1.8" armature="0.02" stiffness="15.0" solreflimit="0.005 1"/>
+        <geom name="pelican_torso_visual" class="visual" mesh="pelican_torso_vis" material="plumage_white_mat"/>
+        <geom name="pelican_torso_col" class="collision" type="capsule"
+              fromto="-0.08 0 0.06 0.12 0 0.20" size="0.125" mass="3.95"/>
+        <geom name="pelican_tail_col" class="collision" type="capsule"
+              fromto="-0.14 0 0.04 -0.31 0 0.08" size="0.048" mass="0.25"/>
+
+        <!-- Pelican Neck -->
+        <body name="pelican_neck" pos="0.145 0 0.235">
+          <joint name="neck_pitch" type="hinge" axis="0 1 0" range="-0.55 0.55"
+                 damping="0.35" armature="0.005"/>
+          <joint name="neck_yaw" type="hinge" axis="0 0 1" range="-0.75 0.75"
+                 damping="0.35" armature="0.005"/>
+          <geom name="pelican_neck_visual" class="visual" mesh="pelican_neck_vis" material="plumage_white_mat"/>
+          <geom name="pelican_neck_col" class="collision" type="capsule"
+                fromto="0 0 0 0.035 0 0.255" size="0.052" mass="0.55"/>
+
+          <!-- Pelican Head + Upper Bill -->
+          <body name="pelican_head" pos="0.035 0 0.255">
+            <joint name="head_pitch" type="hinge" axis="0 1 0" range="-0.55 0.55"
+                   damping="0.25" armature="0.004"/>
+            <joint name="head_yaw" type="hinge" axis="0 0 1" range="-0.90 0.90"
+                   damping="0.25" armature="0.004"/>
+            <geom name="pelican_head_visual" class="visual" mesh="pelican_head_vis" material="plumage_white_mat"/>
+            <geom name="pelican_eyepatch_visual" class="visual" mesh="pelican_eyepatch_vis" material="eyepatch_cream_mat"/>
+            <geom name="pelican_eyes_visual" class="visual" mesh="pelican_eyes_vis" material="eye_gloss_mat"/>
+            <geom name="pelican_upper_beak_visual" class="visual" mesh="pelican_upper_beak_vis" material="beak_gold_mat"/>
+            <geom name="pelican_beak_hook_visual" class="visual" mesh="pelican_beak_hook_vis" material="beak_coral_mat"/>
+
+            <geom name="pelican_head_col" class="collision" type="sphere"
+                  pos="0.015 0 0.010" size="0.058" mass="0.35"/>
+            <geom name="pelican_upper_beak_col" class="collision" type="capsule"
+                  fromto="0.050 0 0.012 0.340 0 -0.052" size="0.024" mass="0.20"
+                  rgba="0.95 0.55 0.15 0.45"/>
+
+            <!-- Lower Jaw & Gular Pouch -->
+            <body name="pelican_jaw" pos="0.042 0 -0.015">
+              <joint name="beak_open" type="hinge" axis="0 1 0" range="-0.03 0.68"
+                     damping="0.18" armature="0.003" stiffness="2.0" solreflimit="0.005 1"/>
+              <geom name="pelican_jaw_rim_visual" class="visual" mesh="pelican_jaw_rim_vis" material="beak_gold_mat"/>
+              <geom name="pelican_pouch_visual" class="visual" mesh="pelican_pouch_vis" material="pouch_saffron_mat"/>
+              <geom name="pelican_jaw_col" class="collision" type="capsule"
+                    fromto="0.02 0 -0.03 0.28 0 -0.045" size="0.028" mass="0.25"
+                    rgba="0.95 0.55 0.15 0.45"/>
+            </body>
+          </body>
+        </body>
+
+        <!-- Left Wing -->
+        <body name="wing_upper_left" pos="0.065 0.125 0.175">
+          <joint name="wing_l_yaw" type="hinge" axis="0 0 1" range="-0.45 1.35" damping="0.30" armature="0.005"/>
+          <joint name="wing_l_flap" type="hinge" axis="1 0 0" range="-0.75 1.15" damping="0.30" armature="0.005"/>
+          <joint name="wing_l_pitch" type="hinge" axis="0 1 0" range="-0.60 0.60" damping="0.30" armature="0.005"/>
+          <geom name="wing_upper_left_visual" class="visual" mesh="wing_upper_left_vis" material="plumage_white_mat"/>
+          <geom name="wing_upper_left_col" class="collision" type="capsule"
+                fromto="0 0 0 0.185 0.095 -0.035" size="0.038" mass="0.35"/>
+
+          <body name="wing_outer_left" pos="0.185 0.095 -0.035">
+            <joint name="wing_l_elbow" type="hinge" axis="1 0 0" range="-0.95 0.95" damping="0.20" armature="0.003"/>
+            <geom name="wing_outer_white_left_visual" class="visual" mesh="wing_outer_white_left_vis" material="plumage_white_mat"/>
+            <geom name="wing_primaries_left_visual" class="visual" mesh="wing_primaries_left_vis" material="wingtip_slate_mat"/>
+            <geom name="wing_outer_left_col" class="collision" type="capsule"
+                  fromto="0 0 0 0.180 0.025 -0.028" size="0.025" mass="0.20"/>
+          </body>
+        </body>
+
+        <!-- Right Wing -->
+        <body name="wing_upper_right" pos="0.065 -0.125 0.175">
+          <joint name="wing_r_yaw" type="hinge" axis="0 0 -1" range="-0.45 1.35" damping="0.30" armature="0.005"/>
+          <joint name="wing_r_flap" type="hinge" axis="-1 0 0" range="-0.75 1.15" damping="0.30" armature="0.005"/>
+          <joint name="wing_r_pitch" type="hinge" axis="0 1 0" range="-0.60 0.60" damping="0.30" armature="0.005"/>
+          <geom name="wing_upper_right_visual" class="visual" mesh="wing_upper_right_vis" material="plumage_white_mat"/>
+          <geom name="wing_upper_right_col" class="collision" type="capsule"
+                fromto="0 0 0 0.185 -0.095 -0.035" size="0.038" mass="0.35"/>
+
+          <body name="wing_outer_right" pos="0.185 -0.095 -0.035">
+            <joint name="wing_r_elbow" type="hinge" axis="-1 0 0" range="-0.95 0.95" damping="0.20" armature="0.003"/>
+            <geom name="wing_outer_white_right_visual" class="visual" mesh="wing_outer_white_right_vis" material="plumage_white_mat"/>
+            <geom name="wing_primaries_right_visual" class="visual" mesh="wing_primaries_right_vis" material="wingtip_slate_mat"/>
+            <geom name="wing_outer_right_col" class="collision" type="capsule"
+                  fromto="0 0 0 0.180 -0.025 -0.028" size="0.025" mass="0.20"/>
+          </body>
+        </body>
+
+        <!-- Left Leg (hip_mount handles lateral roll; thigh/shin/foot pitch around Y) -->
+        <body name="hip_mount_left" pos="0.035 0.110 -0.045">
+          <joint name="hip_l_roll" type="hinge" axis="1 0 0" range="-0.40 0.40" damping="0.08" armature="0.003"/>
+          <geom name="hip_mount_left_col" class="collision" type="sphere" size="0.025" mass="0.05"/>
+          <body name="thigh_left" quat="0.818601 0.013314 -0.574132 -0.009338">
+            <joint name="hip_l_pitch" type="hinge" axis="0 1 0" range="-2.0 2.0" damping="0.05" armature="0.003"/>
+            <geom name="thigh_left_visual" class="visual" mesh="pelican_thigh_vis" material="plumage_white_mat"/>
+            <geom name="thigh_left_col" class="collision" type="capsule"
+                  fromto="0 0 0 0 0 -0.345" size="0.036" mass="0.28"/>
+
+            <body name="shin_left" pos="0 0 -0.345" quat="0.793498 0.000000 0.608573 0.000000">
+              <joint name="knee_l_pitch" type="hinge" axis="0 1 0" range="-1.5 2.0" damping="0.04" armature="0.002"/>
+              <geom name="shin_left_visual" class="visual" mesh="pelican_shin_vis" material="legs_orange_mat"/>
+              <geom name="shin_left_col" class="collision" type="capsule"
+                    fromto="0 0 0 0 0 -0.345" size="0.015" mass="0.15"/>
+
+              <body name="foot_left" pos="0 0 -0.345" quat="0.999092 -0.000000 -0.042612 -0.000000">
+                <joint name="ankle_l_pitch" type="hinge" axis="0 1 0" range="-1.7 1.7" damping="0.04" armature="0.002"/>
+                <geom name="foot_left_visual" class="visual" mesh="pelican_foot_vis" material="legs_orange_mat"/>
+                <geom name="foot_left_col" class="collision" type="box"
+                      pos="0.035 0 -0.006" size="0.050 0.036 0.007" mass="0.10"
+                      rgba="0.90 0.80 0.15 0.50"/>
+                <site name="foot_left_pin" group="4" pos="0 0 0" size="0.012" rgba="0.95 0.25 0.25 0.40"/>
+              </body>
+            </body>
+          </body>
+        </body>
+
+        <!-- Right Leg -->
+        <body name="hip_mount_right" pos="0.035 -0.110 -0.045">
+          <joint name="hip_r_roll" type="hinge" axis="1 0 0" range="-0.40 0.40" damping="0.08" armature="0.003"/>
+          <geom name="hip_mount_right_col" class="collision" type="sphere" size="0.025" mass="0.05"/>
+          <body name="thigh_right" quat="0.919833 -0.014961 -0.391973 0.006375">
+            <joint name="hip_r_pitch" type="hinge" axis="0 1 0" range="-2.0 2.0" damping="0.05" armature="0.003"/>
+            <geom name="thigh_right_visual" class="visual" mesh="pelican_thigh_vis" material="plumage_white_mat"/>
+            <geom name="thigh_right_col" class="collision" type="capsule"
+                  fromto="0 0 0 0 0 -0.345" size="0.036" mass="0.28"/>
+
+            <body name="shin_right" pos="0 0 -0.345" quat="0.668823 0.000000 0.743422 0.000000">
+              <joint name="knee_r_pitch" type="hinge" axis="0 1 0" range="-1.5 2.0" damping="0.04" armature="0.002"/>
+              <geom name="shin_right_visual" class="visual" mesh="pelican_shin_vis" material="legs_orange_mat"/>
+              <geom name="shin_right_col" class="collision" type="capsule"
+                    fromto="0 0 0 0 0 -0.345" size="0.015" mass="0.15"/>
+
+              <body name="foot_right" pos="0 0 -0.345" quat="0.906726 -0.000000 -0.421719 -0.000000">
+                <joint name="ankle_r_pitch" type="hinge" axis="0 1 0" range="-1.7 1.7" damping="0.04" armature="0.002"/>
+                <geom name="foot_right_visual" class="visual" mesh="pelican_foot_vis" material="legs_orange_mat"/>
+                <geom name="foot_right_col" class="collision" type="box"
+                      pos="0.035 0 -0.006" size="0.050 0.036 0.007" mass="0.10"
+                      rgba="0.90 0.80 0.15 0.50"/>
+                <site name="foot_right_pin" group="4" pos="0 0 0" size="0.012" rgba="0.95 0.25 0.25 0.40"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <site name="bike_imu" group="4" pos="0 0 0.50" size="0.020" rgba="0.15 0.80 0.85 0.35"/>
+      <camera name="chase_cam" pos="-2.35 -1.15 1.35" xyaxes="0.45 -0.89 0 0.25 0.13 0.96" fovy="45"/>
+      <camera name="side_cam" pos="-0.05 -2.20 0.95" xyaxes="1 0 0 0 0.15 0.99" fovy="42"/>
+      <camera name="beak_cam" pos="0.35 -0.85 1.35" xyaxes="0.90 0.44 0 -0.08 0.16 0.98" fovy="45"/>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude name="ex_0_1" body1="pelican_bicycle" body2="rear_wheel"/>
+    <exclude name="ex_0_2" body1="pelican_bicycle" body2="front_fork"/>
+    <exclude name="ex_0_3" body1="pelican_bicycle" body2="front_wheel"/>
+    <exclude name="ex_0_4" body1="pelican_bicycle" body2="crank"/>
+    <exclude name="ex_0_5" body1="pelican_bicycle" body2="pedal_left"/>
+    <exclude name="ex_0_6" body1="pelican_bicycle" body2="pedal_right"/>
+    <exclude name="ex_0_7" body1="pelican_bicycle" body2="pelican_torso"/>
+    <exclude name="ex_0_8" body1="pelican_bicycle" body2="pelican_neck"/>
+    <exclude name="ex_0_9" body1="pelican_bicycle" body2="pelican_head"/>
+    <exclude name="ex_0_10" body1="pelican_bicycle" body2="pelican_jaw"/>
+    <exclude name="ex_0_11" body1="pelican_bicycle" body2="wing_upper_left"/>
+    <exclude name="ex_0_12" body1="pelican_bicycle" body2="wing_outer_left"/>
+    <exclude name="ex_0_13" body1="pelican_bicycle" body2="wing_upper_right"/>
+    <exclude name="ex_0_14" body1="pelican_bicycle" body2="wing_outer_right"/>
+    <exclude name="ex_0_15" body1="pelican_bicycle" body2="hip_mount_left"/>
+    <exclude name="ex_0_16" body1="pelican_bicycle" body2="thigh_left"/>
+    <exclude name="ex_0_17" body1="pelican_bicycle" body2="shin_left"/>
+    <exclude name="ex_0_18" body1="pelican_bicycle" body2="foot_left"/>
+    <exclude name="ex_0_19" body1="pelican_bicycle" body2="hip_mount_right"/>
+    <exclude name="ex_0_20" body1="pelican_bicycle" body2="thigh_right"/>
+    <exclude name="ex_0_21" body1="pelican_bicycle" body2="shin_right"/>
+    <exclude name="ex_0_22" body1="pelican_bicycle" body2="foot_right"/>
+    <exclude name="ex_1_2" body1="rear_wheel" body2="front_fork"/>
+    <exclude name="ex_1_3" body1="rear_wheel" body2="front_wheel"/>
+    <exclude name="ex_1_4" body1="rear_wheel" body2="crank"/>
+    <exclude name="ex_1_5" body1="rear_wheel" body2="pedal_left"/>
+    <exclude name="ex_1_6" body1="rear_wheel" body2="pedal_right"/>
+    <exclude name="ex_1_7" body1="rear_wheel" body2="pelican_torso"/>
+    <exclude name="ex_1_8" body1="rear_wheel" body2="pelican_neck"/>
+    <exclude name="ex_1_9" body1="rear_wheel" body2="pelican_head"/>
+    <exclude name="ex_1_10" body1="rear_wheel" body2="pelican_jaw"/>
+    <exclude name="ex_1_11" body1="rear_wheel" body2="wing_upper_left"/>
+    <exclude name="ex_1_12" body1="rear_wheel" body2="wing_outer_left"/>
+    <exclude name="ex_1_13" body1="rear_wheel" body2="wing_upper_right"/>
+    <exclude name="ex_1_14" body1="rear_wheel" body2="wing_outer_right"/>
+    <exclude name="ex_1_15" body1="rear_wheel" body2="hip_mount_left"/>
+    <exclude name="ex_1_16" body1="rear_wheel" body2="thigh_left"/>
+    <exclude name="ex_1_17" body1="rear_wheel" body2="shin_left"/>
+    <exclude name="ex_1_18" body1="rear_wheel" body2="foot_left"/>
+    <exclude name="ex_1_19" body1="rear_wheel" body2="hip_mount_right"/>
+    <exclude name="ex_1_20" body1="rear_wheel" body2="thigh_right"/>
+    <exclude name="ex_1_21" body1="rear_wheel" body2="shin_right"/>
+    <exclude name="ex_1_22" body1="rear_wheel" body2="foot_right"/>
+    <exclude name="ex_2_3" body1="front_fork" body2="front_wheel"/>
+    <exclude name="ex_2_4" body1="front_fork" body2="crank"/>
+    <exclude name="ex_2_5" body1="front_fork" body2="pedal_left"/>
+    <exclude name="ex_2_6" body1="front_fork" body2="pedal_right"/>
+    <exclude name="ex_2_7" body1="front_fork" body2="pelican_torso"/>
+    <exclude name="ex_2_8" body1="front_fork" body2="pelican_neck"/>
+    <exclude name="ex_2_9" body1="front_fork" body2="pelican_head"/>
+    <exclude name="ex_2_10" body1="front_fork" body2="pelican_jaw"/>
+    <exclude name="ex_2_11" body1="front_fork" body2="wing_upper_left"/>
+    <exclude name="ex_2_12" body1="front_fork" body2="wing_outer_left"/>
+    <exclude name="ex_2_13" body1="front_fork" body2="wing_upper_right"/>
+    <exclude name="ex_2_14" body1="front_fork" body2="wing_outer_right"/>
+    <exclude name="ex_2_15" body1="front_fork" body2="hip_mount_left"/>
+    <exclude name="ex_2_16" body1="front_fork" body2="thigh_left"/>
+    <exclude name="ex_2_17" body1="front_fork" body2="shin_left"/>
+    <exclude name="ex_2_18" body1="front_fork" body2="foot_left"/>
+    <exclude name="ex_2_19" body1="front_fork" body2="hip_mount_right"/>
+    <exclude name="ex_2_20" body1="front_fork" body2="thigh_right"/>
+    <exclude name="ex_2_21" body1="front_fork" body2="shin_right"/>
+    <exclude name="ex_2_22" body1="front_fork" body2="foot_right"/>
+    <exclude name="ex_3_4" body1="front_wheel" body2="crank"/>
+    <exclude name="ex_3_5" body1="front_wheel" body2="pedal_left"/>
+    <exclude name="ex_3_6" body1="front_wheel" body2="pedal_right"/>
+    <exclude name="ex_3_7" body1="front_wheel" body2="pelican_torso"/>
+    <exclude name="ex_3_8" body1="front_wheel" body2="pelican_neck"/>
+    <exclude name="ex_3_9" body1="front_wheel" body2="pelican_head"/>
+    <exclude name="ex_3_10" body1="front_wheel" body2="pelican_jaw"/>
+    <exclude name="ex_3_11" body1="front_wheel" body2="wing_upper_left"/>
+    <exclude name="ex_3_12" body1="front_wheel" body2="wing_outer_left"/>
+    <exclude name="ex_3_13" body1="front_wheel" body2="wing_upper_right"/>
+    <exclude name="ex_3_14" body1="front_wheel" body2="wing_outer_right"/>
+    <exclude name="ex_3_15" body1="front_wheel" body2="hip_mount_left"/>
+    <exclude name="ex_3_16" body1="front_wheel" body2="thigh_left"/>
+    <exclude name="ex_3_17" body1="front_wheel" body2="shin_left"/>
+    <exclude name="ex_3_18" body1="front_wheel" body2="foot_left"/>
+    <exclude name="ex_3_19" body1="front_wheel" body2="hip_mount_right"/>
+    <exclude name="ex_3_20" body1="front_wheel" body2="thigh_right"/>
+    <exclude name="ex_3_21" body1="front_wheel" body2="shin_right"/>
+    <exclude name="ex_3_22" body1="front_wheel" body2="foot_right"/>
+    <exclude name="ex_4_5" body1="crank" body2="pedal_left"/>
+    <exclude name="ex_4_6" body1="crank" body2="pedal_right"/>
+    <exclude name="ex_4_7" body1="crank" body2="pelican_torso"/>
+    <exclude name="ex_4_8" body1="crank" body2="pelican_neck"/>
+    <exclude name="ex_4_9" body1="crank" body2="pelican_head"/>
+    <exclude name="ex_4_10" body1="crank" body2="pelican_jaw"/>
+    <exclude name="ex_4_11" body1="crank" body2="wing_upper_left"/>
+    <exclude name="ex_4_12" body1="crank" body2="wing_outer_left"/>
+    <exclude name="ex_4_13" body1="crank" body2="wing_upper_right"/>
+    <exclude name="ex_4_14" body1="crank" body2="wing_outer_right"/>
+    <exclude name="ex_4_15" body1="crank" body2="hip_mount_left"/>
+    <exclude name="ex_4_16" body1="crank" body2="thigh_left"/>
+    <exclude name="ex_4_17" body1="crank" body2="shin_left"/>
+    <exclude name="ex_4_18" body1="crank" body2="foot_left"/>
+    <exclude name="ex_4_19" body1="crank" body2="hip_mount_right"/>
+    <exclude name="ex_4_20" body1="crank" body2="thigh_right"/>
+    <exclude name="ex_4_21" body1="crank" body2="shin_right"/>
+    <exclude name="ex_4_22" body1="crank" body2="foot_right"/>
+    <exclude name="ex_5_6" body1="pedal_left" body2="pedal_right"/>
+    <exclude name="ex_5_7" body1="pedal_left" body2="pelican_torso"/>
+    <exclude name="ex_5_8" body1="pedal_left" body2="pelican_neck"/>
+    <exclude name="ex_5_9" body1="pedal_left" body2="pelican_head"/>
+    <exclude name="ex_5_10" body1="pedal_left" body2="pelican_jaw"/>
+    <exclude name="ex_5_11" body1="pedal_left" body2="wing_upper_left"/>
+    <exclude name="ex_5_12" body1="pedal_left" body2="wing_outer_left"/>
+    <exclude name="ex_5_13" body1="pedal_left" body2="wing_upper_right"/>
+    <exclude name="ex_5_14" body1="pedal_left" body2="wing_outer_right"/>
+    <exclude name="ex_5_15" body1="pedal_left" body2="hip_mount_left"/>
+    <exclude name="ex_5_16" body1="pedal_left" body2="thigh_left"/>
+    <exclude name="ex_5_17" body1="pedal_left" body2="shin_left"/>
+    <exclude name="ex_5_18" body1="pedal_left" body2="foot_left"/>
+    <exclude name="ex_5_19" body1="pedal_left" body2="hip_mount_right"/>
+    <exclude name="ex_5_20" body1="pedal_left" body2="thigh_right"/>
+    <exclude name="ex_5_21" body1="pedal_left" body2="shin_right"/>
+    <exclude name="ex_5_22" body1="pedal_left" body2="foot_right"/>
+    <exclude name="ex_6_7" body1="pedal_right" body2="pelican_torso"/>
+    <exclude name="ex_6_8" body1="pedal_right" body2="pelican_neck"/>
+    <exclude name="ex_6_9" body1="pedal_right" body2="pelican_head"/>
+    <exclude name="ex_6_10" body1="pedal_right" body2="pelican_jaw"/>
+    <exclude name="ex_6_11" body1="pedal_right" body2="wing_upper_left"/>
+    <exclude name="ex_6_12" body1="pedal_right" body2="wing_outer_left"/>
+    <exclude name="ex_6_13" body1="pedal_right" body2="wing_upper_right"/>
+    <exclude name="ex_6_14" body1="pedal_right" body2="wing_outer_right"/>
+    <exclude name="ex_6_15" body1="pedal_right" body2="hip_mount_left"/>
+    <exclude name="ex_6_16" body1="pedal_right" body2="thigh_left"/>
+    <exclude name="ex_6_17" body1="pedal_right" body2="shin_left"/>
+    <exclude name="ex_6_18" body1="pedal_right" body2="foot_left"/>
+    <exclude name="ex_6_19" body1="pedal_right" body2="hip_mount_right"/>
+    <exclude name="ex_6_20" body1="pedal_right" body2="thigh_right"/>
+    <exclude name="ex_6_21" body1="pedal_right" body2="shin_right"/>
+    <exclude name="ex_6_22" body1="pedal_right" body2="foot_right"/>
+    <exclude name="ex_7_8" body1="pelican_torso" body2="pelican_neck"/>
+    <exclude name="ex_7_9" body1="pelican_torso" body2="pelican_head"/>
+    <exclude name="ex_7_10" body1="pelican_torso" body2="pelican_jaw"/>
+    <exclude name="ex_7_11" body1="pelican_torso" body2="wing_upper_left"/>
+    <exclude name="ex_7_12" body1="pelican_torso" body2="wing_outer_left"/>
+    <exclude name="ex_7_13" body1="pelican_torso" body2="wing_upper_right"/>
+    <exclude name="ex_7_14" body1="pelican_torso" body2="wing_outer_right"/>
+    <exclude name="ex_7_15" body1="pelican_torso" body2="hip_mount_left"/>
+    <exclude name="ex_7_16" body1="pelican_torso" body2="thigh_left"/>
+    <exclude name="ex_7_17" body1="pelican_torso" body2="shin_left"/>
+    <exclude name="ex_7_18" body1="pelican_torso" body2="foot_left"/>
+    <exclude name="ex_7_19" body1="pelican_torso" body2="hip_mount_right"/>
+    <exclude name="ex_7_20" body1="pelican_torso" body2="thigh_right"/>
+    <exclude name="ex_7_21" body1="pelican_torso" body2="shin_right"/>
+    <exclude name="ex_7_22" body1="pelican_torso" body2="foot_right"/>
+    <exclude name="ex_8_9" body1="pelican_neck" body2="pelican_head"/>
+    <exclude name="ex_8_10" body1="pelican_neck" body2="pelican_jaw"/>
+    <exclude name="ex_8_11" body1="pelican_neck" body2="wing_upper_left"/>
+    <exclude name="ex_8_12" body1="pelican_neck" body2="wing_outer_left"/>
+    <exclude name="ex_8_13" body1="pelican_neck" body2="wing_upper_right"/>
+    <exclude name="ex_8_14" body1="pelican_neck" body2="wing_outer_right"/>
+    <exclude name="ex_8_15" body1="pelican_neck" body2="hip_mount_left"/>
+    <exclude name="ex_8_16" body1="pelican_neck" body2="thigh_left"/>
+    <exclude name="ex_8_17" body1="pelican_neck" body2="shin_left"/>
+    <exclude name="ex_8_18" body1="pelican_neck" body2="foot_left"/>
+    <exclude name="ex_8_19" body1="pelican_neck" body2="hip_mount_right"/>
+    <exclude name="ex_8_20" body1="pelican_neck" body2="thigh_right"/>
+    <exclude name="ex_8_21" body1="pelican_neck" body2="shin_right"/>
+    <exclude name="ex_8_22" body1="pelican_neck" body2="foot_right"/>
+    <exclude name="ex_9_10" body1="pelican_head" body2="pelican_jaw"/>
+    <exclude name="ex_9_11" body1="pelican_head" body2="wing_upper_left"/>
+    <exclude name="ex_9_12" body1="pelican_head" body2="wing_outer_left"/>
+    <exclude name="ex_9_13" body1="pelican_head" body2="wing_upper_right"/>
+    <exclude name="ex_9_14" body1="pelican_head" body2="wing_outer_right"/>
+    <exclude name="ex_9_15" body1="pelican_head" body2="hip_mount_left"/>
+    <exclude name="ex_9_16" body1="pelican_head" body2="thigh_left"/>
+    <exclude name="ex_9_17" body1="pelican_head" body2="shin_left"/>
+    <exclude name="ex_9_18" body1="pelican_head" body2="foot_left"/>
+    <exclude name="ex_9_19" body1="pelican_head" body2="hip_mount_right"/>
+    <exclude name="ex_9_20" body1="pelican_head" body2="thigh_right"/>
+    <exclude name="ex_9_21" body1="pelican_head" body2="shin_right"/>
+    <exclude name="ex_9_22" body1="pelican_head" body2="foot_right"/>
+    <exclude name="ex_10_11" body1="pelican_jaw" body2="wing_upper_left"/>
+    <exclude name="ex_10_12" body1="pelican_jaw" body2="wing_outer_left"/>
+    <exclude name="ex_10_13" body1="pelican_jaw" body2="wing_upper_right"/>
+    <exclude name="ex_10_14" body1="pelican_jaw" body2="wing_outer_right"/>
+    <exclude name="ex_10_15" body1="pelican_jaw" body2="hip_mount_left"/>
+    <exclude name="ex_10_16" body1="pelican_jaw" body2="thigh_left"/>
+    <exclude name="ex_10_17" body1="pelican_jaw" body2="shin_left"/>
+    <exclude name="ex_10_18" body1="pelican_jaw" body2="foot_left"/>
+    <exclude name="ex_10_19" body1="pelican_jaw" body2="hip_mount_right"/>
+    <exclude name="ex_10_20" body1="pelican_jaw" body2="thigh_right"/>
+    <exclude name="ex_10_21" body1="pelican_jaw" body2="shin_right"/>
+    <exclude name="ex_10_22" body1="pelican_jaw" body2="foot_right"/>
+    <exclude name="ex_11_12" body1="wing_upper_left" body2="wing_outer_left"/>
+    <exclude name="ex_11_13" body1="wing_upper_left" body2="wing_upper_right"/>
+    <exclude name="ex_11_14" body1="wing_upper_left" body2="wing_outer_right"/>
+    <exclude name="ex_11_15" body1="wing_upper_left" body2="hip_mount_left"/>
+    <exclude name="ex_11_16" body1="wing_upper_left" body2="thigh_left"/>
+    <exclude name="ex_11_17" body1="wing_upper_left" body2="shin_left"/>
+    <exclude name="ex_11_18" body1="wing_upper_left" body2="foot_left"/>
+    <exclude name="ex_11_19" body1="wing_upper_left" body2="hip_mount_right"/>
+    <exclude name="ex_11_20" body1="wing_upper_left" body2="thigh_right"/>
+    <exclude name="ex_11_21" body1="wing_upper_left" body2="shin_right"/>
+    <exclude name="ex_11_22" body1="wing_upper_left" body2="foot_right"/>
+    <exclude name="ex_12_13" body1="wing_outer_left" body2="wing_upper_right"/>
+    <exclude name="ex_12_14" body1="wing_outer_left" body2="wing_outer_right"/>
+    <exclude name="ex_12_15" body1="wing_outer_left" body2="hip_mount_left"/>
+    <exclude name="ex_12_16" body1="wing_outer_left" body2="thigh_left"/>
+    <exclude name="ex_12_17" body1="wing_outer_left" body2="shin_left"/>
+    <exclude name="ex_12_18" body1="wing_outer_left" body2="foot_left"/>
+    <exclude name="ex_12_19" body1="wing_outer_left" body2="hip_mount_right"/>
+    <exclude name="ex_12_20" body1="wing_outer_left" body2="thigh_right"/>
+    <exclude name="ex_12_21" body1="wing_outer_left" body2="shin_right"/>
+    <exclude name="ex_12_22" body1="wing_outer_left" body2="foot_right"/>
+    <exclude name="ex_13_14" body1="wing_upper_right" body2="wing_outer_right"/>
+    <exclude name="ex_13_15" body1="wing_upper_right" body2="hip_mount_left"/>
+    <exclude name="ex_13_16" body1="wing_upper_right" body2="thigh_left"/>
+    <exclude name="ex_13_17" body1="wing_upper_right" body2="shin_left"/>
+    <exclude name="ex_13_18" body1="wing_upper_right" body2="foot_left"/>
+    <exclude name="ex_13_19" body1="wing_upper_right" body2="hip_mount_right"/>
+    <exclude name="ex_13_20" body1="wing_upper_right" body2="thigh_right"/>
+    <exclude name="ex_13_21" body1="wing_upper_right" body2="shin_right"/>
+    <exclude name="ex_13_22" body1="wing_upper_right" body2="foot_right"/>
+    <exclude name="ex_14_15" body1="wing_outer_right" body2="hip_mount_left"/>
+    <exclude name="ex_14_16" body1="wing_outer_right" body2="thigh_left"/>
+    <exclude name="ex_14_17" body1="wing_outer_right" body2="shin_left"/>
+    <exclude name="ex_14_18" body1="wing_outer_right" body2="foot_left"/>
+    <exclude name="ex_14_19" body1="wing_outer_right" body2="hip_mount_right"/>
+    <exclude name="ex_14_20" body1="wing_outer_right" body2="thigh_right"/>
+    <exclude name="ex_14_21" body1="wing_outer_right" body2="shin_right"/>
+    <exclude name="ex_14_22" body1="wing_outer_right" body2="foot_right"/>
+    <exclude name="ex_15_16" body1="hip_mount_left" body2="thigh_left"/>
+    <exclude name="ex_15_17" body1="hip_mount_left" body2="shin_left"/>
+    <exclude name="ex_15_18" body1="hip_mount_left" body2="foot_left"/>
+    <exclude name="ex_15_19" body1="hip_mount_left" body2="hip_mount_right"/>
+    <exclude name="ex_15_20" body1="hip_mount_left" body2="thigh_right"/>
+    <exclude name="ex_15_21" body1="hip_mount_left" body2="shin_right"/>
+    <exclude name="ex_15_22" body1="hip_mount_left" body2="foot_right"/>
+    <exclude name="ex_16_17" body1="thigh_left" body2="shin_left"/>
+    <exclude name="ex_16_18" body1="thigh_left" body2="foot_left"/>
+    <exclude name="ex_16_19" body1="thigh_left" body2="hip_mount_right"/>
+    <exclude name="ex_16_20" body1="thigh_left" body2="thigh_right"/>
+    <exclude name="ex_16_21" body1="thigh_left" body2="shin_right"/>
+    <exclude name="ex_16_22" body1="thigh_left" body2="foot_right"/>
+    <exclude name="ex_17_18" body1="shin_left" body2="foot_left"/>
+    <exclude name="ex_17_19" body1="shin_left" body2="hip_mount_right"/>
+    <exclude name="ex_17_20" body1="shin_left" body2="thigh_right"/>
+    <exclude name="ex_17_21" body1="shin_left" body2="shin_right"/>
+    <exclude name="ex_17_22" body1="shin_left" body2="foot_right"/>
+    <exclude name="ex_18_19" body1="foot_left" body2="hip_mount_right"/>
+    <exclude name="ex_18_20" body1="foot_left" body2="thigh_right"/>
+    <exclude name="ex_18_21" body1="foot_left" body2="shin_right"/>
+    <exclude name="ex_18_22" body1="foot_left" body2="foot_right"/>
+    <exclude name="ex_19_20" body1="hip_mount_right" body2="thigh_right"/>
+    <exclude name="ex_19_21" body1="hip_mount_right" body2="shin_right"/>
+    <exclude name="ex_19_22" body1="hip_mount_right" body2="foot_right"/>
+    <exclude name="ex_20_21" body1="thigh_right" body2="shin_right"/>
+    <exclude name="ex_20_22" body1="thigh_right" body2="foot_right"/>
+    <exclude name="ex_21_22" body1="shin_right" body2="foot_right"/>
+  </contact>
+
+  <equality>
+    <joint name="chain_drive" joint1="rear_wheel_joint" joint2="crank_joint" polycoef="0 2.0 0 0 0" solref="0.004 1"/>
+    <connect name="left_foot_pedal" site1="foot_left_pin" site2="pedal_left_pin" solref="0.004 1"/>
+    <connect name="right_foot_pedal" site1="foot_right_pin" site2="pedal_right_pin" solref="0.004 1"/>
+  </equality>
+
+  <actuator>
+    <motor name="drive_motor" joint="crank_joint" gear="1" ctrllimited="true" ctrlrange="-320 320"/>
+    <motor name="front_brake" joint="front_wheel_joint" gear="1" ctrllimited="true" ctrlrange="-260 260"/>
+    <position name="steer_servo" joint="steer_joint" kp="130" kv="11" ctrllimited="true" ctrlrange="-0.74 0.74"/>
+    <position name="pedal_l_servo" joint="pedal_left_joint" kp="8" kv="0.8" ctrllimited="false" forcelimited="true" forcerange="-20 20"/>
+    <position name="pedal_r_servo" joint="pedal_right_joint" kp="8" kv="0.8" ctrllimited="false" forcelimited="true" forcerange="-20 20"/>
+    <position name="ankle_l_servo" joint="ankle_l_pitch" kp="12" kv="1.0" ctrllimited="true" ctrlrange="-1.7 1.7"/>
+    <position name="ankle_r_servo" joint="ankle_r_pitch" kp="12" kv="1.0" ctrllimited="true" ctrlrange="-1.7 1.7"/>
+    <position name="pelvis_roll_servo" joint="pelvis_roll" kp="55" kv="7" ctrllimited="true" ctrlrange="-0.36 0.36"/>
+    <position name="pelvis_pitch_servo" joint="pelvis_pitch" kp="55" kv="7" ctrllimited="true" ctrlrange="-0.38 0.36"/>
+    <position name="neck_pitch_servo" joint="neck_pitch" kp="18" kv="2.5" ctrllimited="true" ctrlrange="-0.55 0.55"/>
+    <position name="neck_yaw_servo" joint="neck_yaw" kp="18" kv="2.5" ctrllimited="true" ctrlrange="-0.75 0.75"/>
+    <position name="head_pitch_servo" joint="head_pitch" kp="12" kv="1.8" ctrllimited="true" ctrlrange="-0.55 0.55"/>
+    <position name="head_yaw_servo" joint="head_yaw" kp="12" kv="1.8" ctrllimited="true" ctrlrange="-0.90 0.90"/>
+    <position name="beak_open_servo" joint="beak_open" kp="10" kv="1.2" ctrllimited="true" ctrlrange="-0.03 0.68"/>
+    <position name="wing_l_yaw_servo" joint="wing_l_yaw" kp="16" kv="2.0" ctrllimited="true" ctrlrange="-0.45 1.35"/>
+    <position name="wing_l_flap_servo" joint="wing_l_flap" kp="16" kv="2.0" ctrllimited="true" ctrlrange="-0.75 1.15"/>
+    <position name="wing_l_pitch_servo" joint="wing_l_pitch" kp="14" kv="1.8" ctrllimited="true" ctrlrange="-0.60 0.60"/>
+    <position name="wing_l_elbow_servo" joint="wing_l_elbow" kp="10" kv="1.2" ctrllimited="true" ctrlrange="-0.95 0.95"/>
+    <position name="wing_r_yaw_servo" joint="wing_r_yaw" kp="16" kv="2.0" ctrllimited="true" ctrlrange="-0.45 1.35"/>
+    <position name="wing_r_flap_servo" joint="wing_r_flap" kp="16" kv="2.0" ctrllimited="true" ctrlrange="-0.75 1.15"/>
+    <position name="wing_r_pitch_servo" joint="wing_r_pitch" kp="14" kv="1.8" ctrllimited="true" ctrlrange="-0.60 0.60"/>
+    <position name="wing_r_elbow_servo" joint="wing_r_elbow" kp="10" kv="1.2" ctrllimited="true" ctrlrange="-0.95 0.95"/>
+  </actuator>
+
+  <sensor>
+    <velocimeter name="bike_vel" site="bike_imu"/>
+    <gyro name="bike_gyro" site="bike_imu"/>
+    <framepos name="bike_pos" objtype="body" objname="pelican_bicycle"/>
+    <framequat name="bike_quat" objtype="body" objname="pelican_bicycle"/>
+    <subtreecom name="pelican_bicycle_com" body="pelican_bicycle"/>
+  </sensor>
+</mujoco>
