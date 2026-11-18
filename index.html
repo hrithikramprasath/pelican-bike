@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pelican Riding a Bicycle — MuJoCo 4.0.1 WASM + RL</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/",
+        "@mujoco/mujoco": "https://cdn.jsdelivr.net/npm/@mujoco/mujoco@4.0.1/mujoco.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="viewport"></div>
+
+  <div id="loading-overlay">
+    <div class="loading-card">
+      <h1>Pelican Riding a Bicycle</h1>
+      <p id="loading-status">Loading MuJoCo 4.0.1 WebAssembly &amp; 3D assets...</p>
+      <div class="progress-track">
+        <div id="loading-bar" class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="top-banner">
+    <div class="badge-pill">
+      <span class="badge-dot"></span>
+      <span><strong>100% AI-Generated</strong> (Gemini 4 Hydrogen) · Live MuJoCo 4.0.1 WASM</span>
+      <a href="https://github.com/hrithikramprasath/pelican-bike" target="_blank" rel="noopener">GitHub Repo</a>
+    </div>
+  </div>
+
+  <aside id="control-panel">
+    <div class="panel-header">
+      <span class="panel-title">Pelican Bicycle Controls</span>
+      <div class="panel-header-actions">
+        <button id="pause-btn" class="mini-btn" type="button">Pause</button>
+        <button id="collapse-btn" class="mini-btn" type="button">Hide</button>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div id="controller-label" class="sub-meta">Controller: Loading...</div>
+
+      <div class="form-grid">
+        <label for="ride-mode">Ride Path</label>
+        <select id="ride-mode">
+          <option value="figure8" selected>Figure-8 Track</option>
+          <option value="circle_left">Circle Left</option>
+          <option value="circle_right">Circle Right</option>
+          <option value="cruise">Straight Cruise</option>
+          <option value="manual">Manual Steer</option>
+        </select>
+
+        <label for="target-speed">Target Speed</label>
+        <div class="slider-wrap">
+          <input id="target-speed" type="range" min="1.8" max="6.0" step="0.05" value="3.4" />
+          <span id="target-speed-val" class="slider-val">3.40 m/s</span>
+        </div>
+
+        <label id="manual-steer-lbl" class="hidden" for="manual-steer">Manual Steer</label>
+        <div id="manual-steer-wrap" class="slider-wrap hidden">
+          <input id="manual-steer" type="range" min="-1.0" max="1.0" step="0.02" value="0.0" />
+          <span id="manual-steer-val" class="slider-val">0.00</span>
+        </div>
+
+        <label for="wing-mode">Wing Pose</label>
+        <select id="wing-mode">
+          <option value="handlebars" selected>Hold Handlebars</option>
+          <option value="glide">Spread Glide</option>
+          <option value="flap">Flap Wings</option>
+        </select>
+
+        <label id="flap-amp-lbl" class="hidden" for="flap-amp">Flap Power</label>
+        <div id="flap-amp-wrap" class="slider-wrap hidden">
+          <input id="flap-amp" type="range" min="0.2" max="1.2" step="0.02" value="0.75" />
+          <span id="flap-amp-val" class="slider-val">0.75</span>
+        </div>
+
+        <label for="env-mode">Environment</label>
+        <select id="env-mode">
+          <option value="coastal_road" selected>Coastal Boardwalk</option>
+          <option value="slalom_cones">Slalom Cones</option>
+          <option value="checker">Studio Checker</option>
+        </select>
+      </div>
+
+      <div class="check-list">
+        <label class="check-item" title="Run the trained PPO neural policy. Uncheck to compare LQR baseline.">
+          <input id="use-policy" type="checkbox" checked />
+          <span>Trained PPO Policy</span>
+        </label>
+        <label class="check-item">
+          <input id="beak-hold" type="checkbox" />
+          <span>Beak Open Hold</span>
+        </label>
+        <label class="check-item">
+          <input id="head-look" type="checkbox" checked />
+          <span>Look Into Turns</span>
+        </label>
+        <label class="check-item">
+          <input id="follow-cam" type="checkbox" checked />
+          <span>Chase Orbit Follow</span>
+        </label>
+      </div>
+
+      <hr class="section-sep" />
+      <div class="section-heading">Bike &amp; Pelican Tricks</div>
+      <div class="btn-grid-3">
+        <button class="ctrl-btn trick-btn" data-action="turbo_boost" title="Surge to 5.8 m/s in aero tuck and carve along the road">Turbo Boost!</button>
+        <button class="ctrl-btn trick-btn" data-action="wheelie" title="Pop the front wheel up, balance, and touch down cleanly">Wheelie!</button>
+        <button class="ctrl-btn trick-btn" data-action="wing_hop" title="Power-flap wings to launch both wheels off the road">Wing-Flap Hop!</button>
+        <button class="ctrl-btn trick-btn" data-action="stoppie" title="Apply modulated front brake for a nose-wheelie balance">Stoppie!</button>
+        <button class="ctrl-btn trick-btn" data-action="no_hands" title="Spread wings hands-free while carving along the road">No-Hands!</button>
+        <button class="ctrl-btn trick-btn" data-action="s_carve" title="Weave rhythmic S-turns across the lane and re-center">S-Carve!</button>
+      </div>
+
+      <hr class="section-sep" />
+      <div class="section-heading">Pelican Actions &amp; Disturbances</div>
+      <div class="btn-grid-3">
+        <button class="ctrl-btn" data-action="flap_burst">Flap Wings!</button>
+        <button class="ctrl-btn" data-action="snap_beak">Snap Beak!</button>
+        <button class="ctrl-btn" data-action="ring_bell">Nod &amp; Bell</button>
+        <button class="ctrl-btn" data-action="nudge_left" title="Apply a lateral impulse to test counter-steering recovery">Push Left</button>
+        <button class="ctrl-btn" data-action="nudge_right" title="Apply a lateral impulse to test counter-steering recovery">Push Right</button>
+        <button class="ctrl-btn danger-btn" data-action="reset_ride">Reset Ride</button>
+      </div>
+
+      <hr class="section-sep" />
+      <div class="section-heading">Camera Views</div>
+      <div class="btn-grid-4">
+        <button class="ctrl-btn cam-btn active" data-cam="orbit">Orbit</button>
+        <button class="ctrl-btn cam-btn" data-cam="pb_side_cam">Side</button>
+        <button class="ctrl-btn cam-btn" data-cam="pb_beak_cam">Beak Cam</button>
+        <button class="ctrl-btn cam-btn" data-cam="pb_chase_cam">Chase</button>
+      </div>
+
+      <hr class="section-sep" />
+      <div class="telemetry-box">
+        <div id="tel-status" class="status-line">Status: UPRIGHT | Tricks: 0</div>
+        <div id="tel-metrics">t = 0.0 s | Dist = 0.0 m | Err = 0.00 m</div>
+        <div id="tel-speed">Speed: 0.00 m/s | Cadence: 0 rpm</div>
+        <div id="tel-angles">Lean: +0.0° | Pitch: +0.0° | Steer: +0.0°</div>
+        <canvas id="telemetry-chart" width="300" height="82"></canvas>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-swatch" style="background:#63b3ed"></span>Lean (°)</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#f6ad55"></span>Pitch (°)</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#68d391"></span>Speed×4</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
